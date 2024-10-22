@@ -1,2 +1,3 @@
 # thebrightpause.github.io
-Webpage for thebrightpause.com
+
+Landing page for thebrightpause.com
