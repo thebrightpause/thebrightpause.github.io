@@ -1,3 +1,3 @@
 # thebrightpause.github.io
 
-Landing page for thebrightpause.com
+Testing page for thebrightpause.com
