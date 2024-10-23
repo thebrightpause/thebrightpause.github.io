@@ -54,7 +54,7 @@ export default function Home() {
               Twitter
             </a>
             <a
-              href="https://www.linkedin.com/in/thebrightpause"
+              href="https://www.linkedin.com/company/thebrightpause"
               target="_blank"
               rel="noopener noreferrer"
             >
