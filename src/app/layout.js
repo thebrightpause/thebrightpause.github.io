@@ -14,7 +14,7 @@ export const metadata = {
   openGraph: {
     title: THE_BRIGHT_PAUSE.title,
     description: THE_BRIGHT_PAUSE.description,
-    image: THE_BRIGHT_PAUSE.image,
+    images: [THE_BRIGHT_PAUSE.image],
   },
   robots: {
     index: true,
@@ -31,7 +31,7 @@ export const metadata = {
       site: "@thebrightpause",
       title: THE_BRIGHT_PAUSE.title,
       description: THE_BRIGHT_PAUSE.description,
-      image: THE_BRIGHT_PAUSE.image,
+      images: [THE_BRIGHT_PAUSE.image],
     },
   },
 };
