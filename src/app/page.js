@@ -24,16 +24,15 @@ export default function Home() {
               Today&apos;s social media landscape pushes you to compare your
               life to others, whether you realize it or not. LinkedIn makes you
               question your career, Twitter leaves you feeling dumb, and
-              Instagram makes it seem like you are not enjoying life enough. The
-              overwhelming amount of negative news, ads, and videos leaves you
-              feeling drained.
+              Instagram makes life seem less exciting. The overwhelming amount
+              of negative news, ads, and videos leaves you feeling drained.
             </p>
             <br />
             <p>
-              The Bright Pause is the bringing in a change by reminding people
-              that reality isn&apos;t as bad as it often seems. It aims to give
-              you a break from your routine virtual scroll, offering optimism,
-              and a moment of mindful awareness for your real life.
+              The Bright Pause is bringing in a change by reminding people that
+              reality isn&apos;t as bad as it often seems. It offers a break
+              from routine scrolling, with moments of optimism and mindful
+              awareness for real life.
             </p>
           </section>
           <section className={styles.socialLinkContainer}>
