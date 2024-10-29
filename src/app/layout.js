@@ -43,10 +43,12 @@ export default function RootLayout({ children }) {
       <body className={`${thebrightpause.variable}`}>
         {children}
         <Script
+          id="gtm-1"
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-75TLWG2RC0"
         />
         <Script
+          id="gtm-2"
           dangerouslySetInnerHTML={{
             __html: `window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-75TLWG2RC0');`,
           }}
