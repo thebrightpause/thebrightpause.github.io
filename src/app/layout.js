@@ -1,3 +1,4 @@
+import Script from "next/script";
 import localFont from "next/font/local";
 import "./globals.css";
 import { THE_BRIGHT_PAUSE } from "./constants";
@@ -39,7 +40,18 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${thebrightpause.variable}`}>{children}</body>
+      <body className={`${thebrightpause.variable}`}>
+        {children}
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-75TLWG2RC0"
+        />
+        <Script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-75TLWG2RC0');`,
+          }}
+        />
+      </body>
     </html>
   );
 }
