@@ -1,0 +1,167 @@
+.page {
+	--gray-rgb: 0, 0, 0;
+	--gray-alpha-200: rgba(var(--gray-rgb), 0.08);
+	--gray-alpha-100: rgba(var(--gray-rgb), 0.05);
+
+	--border-width: 3;
+	--border-radius: 24;
+	--trail-size: 50;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	padding: 20px;
+	font-family: var(--font-the-bright-pause);
+}
+.introductiontext {
+	font-size: 4rem;
+	animation: scaleInFadeOut 3s ease-in-out forwards;
+	/* animation: fadeOut 1s ease-in-out forwards; */
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.breathecontainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	rotate: -90deg;
+	animation: scaleOutScaleIn 20s ease-in-out infinite forwards;
+}
+
+.title {
+	font-size: 2rem;
+}
+.titlefadein {
+	font-size: 2rem;
+	animation: fadeIn 0.5s ease-in forwards;
+}
+
+.subtitle {
+	font-size: 1.3rem;
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
+	text-align: center;
+}
+.subtitlefadein {
+	font-size: 1.3rem;
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
+	text-align: center;
+	opacity: 0;
+	animation: fadeIn 1s ease-in 1.2s forwards;
+}
+
+.button1 {
+	background-color: #273347;
+	padding: 8px;
+	margin-top: 1rem;
+	padding-left: 20px;
+	padding-right: 20px;
+	font-size: 1.3rem;
+	stroke: none;
+	border: none;
+	font-family: var(--font-the-bright-pause);
+	border-radius: 20px;
+	opacity: 0;
+	animation: fadeIn 0.8s ease-in 5s forwards;
+}
+
+.box {
+	background: var(--background) padding-box;
+	width: 25vh;
+	height: 25vh;
+	border: calc(var(--border-width) * 1px) solid transparent;
+	border-radius: calc(var(--border-radius) * 1px);
+	rotate: 90deg;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.boxborder {
+	position: absolute;
+	inset: 0;
+	clip-path: inset(0 0 0 0 round calc(var(--border-radius) * 1px));
+	border-radius: calc(var(--border-radius) * 1px);
+	z-index: -1;
+	border: solid #273347;
+	border-width: calc(var(--border-width) * 1px);
+	container-type: inline-size;
+}
+
+.trail {
+	width: calc(var(--trail-size) * 1px);
+	aspect-ratio: 1 / 1;
+	position: absolute;
+	background: radial-gradient(
+		100% 100% at right,
+		var(--accent, #ffffff),
+		transparent 50%
+	);
+	offset-path: border-box;
+	offset-anchor: 100% 50%;
+	animation: journey var(--speed, 20s) infinite linear;
+}
+
+@keyframes journey {
+	to {
+		offset-distance: 100%;
+	}
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes scaleOutScaleIn {
+	0% {
+		transform: scale(1);
+	}
+	25% {
+		transform: scale(1.5);
+	}
+	50% {
+		transform: scale(1.5);
+	}
+	75% {
+		transform: scale(1);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
+
+@keyframes scaleInFadeOut {
+	0% {
+		transform: scale(12);
+		opacity: 0;
+	}
+	40% {
+		transform: scale(1);
+		opacity: 1;
+	}
+	90% {
+		transform: scale(1);
+		opacity: 1;
+	}
+	100% {
+		transform: scale(1);
+		opacity: 0;
+	}
+}
