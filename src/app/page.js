@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./page.module.css";
 import { BsYoutube } from "react-icons/bs";
 import { BsInstagram } from "react-icons/bs";
@@ -10,7 +11,7 @@ export default function Home() {
     <div className={styles.page}>
       <main className={styles.main}>
         <Image
-          className={styles.logo}
+          className={styles.logoDesktop}
           style={{ alignSelf: "center" }}
           src="/thebrightpause-logo.svg"
           alt="The Bright Pause logo"
@@ -18,6 +19,13 @@ export default function Home() {
           height={180}
           priority
         />
+        <div>
+          <div className={styles.breatheEntry}>
+            Feeling Drained? Take a quick&nbsp;
+            <Link href="/breathe" className={styles.cloud}></Link> with us.
+          </div>
+          <div className={styles.contentDivider}></div>
+        </div>
         <div className={styles.contentContainer}>
           <section className={styles.body}>
             <p>
@@ -35,41 +43,48 @@ export default function Home() {
               awareness for real life.
             </p>
           </section>
-          <section className={styles.socialLinkContainer}>
-            <a
-              href="https://instagram.com/thebrightpause"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <BsInstagram />
-              Instagram
-            </a>
-            <a
-              href="https://x.com/thebrightpause"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <BsTwitterX />
-              Twitter
-            </a>
-            <a
-              href="https://www.linkedin.com/company/thebrightpause"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <BsLinkedin />
-              LinkedIn
-            </a>
-            <a
-              href="https://youtube.com/@thebrightpause"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <BsYoutube />
-              YouTube
-            </a>
-          </section>
         </div>
+        <section className={styles.socialLinkContainer}>
+          <Image
+            className={styles.logo}
+            style={{ alignSelf: "center" }}
+            src="/thebrightpause-logo.svg"
+            alt="The Bright Pause logo"
+            width={180}
+            height={180}
+            priority
+          />
+          <div className={styles.footerLine}></div>
+          <p className={styles.footerMessage}>Find more bright pauses at</p>
+          <a
+            href="https://instagram.com/thebrightpause"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <BsInstagram />
+          </a>
+          <a
+            href="https://x.com/thebrightpause"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <BsTwitterX />
+          </a>
+          <a
+            href="https://www.linkedin.com/company/thebrightpause"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <BsLinkedin />
+          </a>
+          <a
+            href="https://youtube.com/@thebrightpause"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <BsYoutube />
+          </a>
+        </section>
       </main>
     </div>
   );
