@@ -195,6 +195,10 @@ a.secondary {
   flex-shrink: 0;
 }
 
+.socialLinkContainer {
+  margin-top: auto;
+}
+
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
   a.primary:hover {
@@ -295,10 +299,6 @@ a.secondary {
 
   .footerMessage {
     font-size: 18px;
-  }
-
-  .socialLinkContainer {
-    margin-top: auto;
   }
 
   .socialLinkContainer a:first-of-type {
