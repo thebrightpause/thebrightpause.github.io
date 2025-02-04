@@ -158,14 +158,6 @@ a.secondary {
   max-width: 798px;
 }
 
-.socialLinkContainer {
-  grid-row-start: 3;
-  display: flex;
-  margin-top: 32px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
 .footerLine {
   width: 1px;
   height: 80px;

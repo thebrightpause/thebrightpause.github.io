@@ -8,7 +8,7 @@ import Image from "next/image";
 
 export default function Footer() {
 	return (
-		<div className="flex flex-wrap items-center gap-3">
+		<div className="flex flex-wrap items-center gap-2">
 			<Image
 				className={styles.logo}
 				style={{ alignSelf: "center" }}
@@ -19,7 +19,7 @@ export default function Footer() {
 				priority
 			/>
 			<div className="h-8 border-l border-white mr-8"></div>
-			<div className="flex items-center text-xl font-bright-pause">
+			<div className="flex items-center text-md font-bright-pause">
 				Find more&nbsp;
 				<span className="hidden lg:block">bright pauses&nbsp;</span>
 				at
