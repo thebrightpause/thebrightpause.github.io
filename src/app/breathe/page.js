@@ -2,16 +2,21 @@
 
 import styles from "./breathe.module.css";
 import { useEffect, useState } from "react";
+import Breathing from "./components/components";
+import IconButton from "../components/IconButton";
+import { SlReload } from "react-icons/sl";
+import Footer from "../components/Footer";
 
 const STATES = {
 	INTRODUCTION: "introduction",
 	GET_READY: "get-ready",
+	INSTRUCTIONS: "instructions",
 	IN_PROGRESS: "in-progress",
 	END: "end",
 };
 
 export default function Meditate() {
-	const [pageState, setPageState] = useState(STATES.INTRODUCTION);
+	const [pageState, setPageState] = useState(STATES.END);
 
 	const goToNextPageState = () => {
 		switch (pageState) {
@@ -19,6 +24,9 @@ export default function Meditate() {
 				setPageState(STATES.GET_READY);
 				break;
 			case STATES.GET_READY:
+				setPageState(STATES.INSTRUCTIONS);
+				break;
+			case STATES.INSTRUCTIONS:
 				setPageState(STATES.IN_PROGRESS);
 				break;
 			case STATES.IN_PROGRESS:
@@ -40,6 +48,9 @@ export default function Meditate() {
 			{pageState === STATES.IN_PROGRESS && (
 				<InProgress goToNextPageState={goToNextPageState} />
 			)}
+			{pageState === STATES.INSTRUCTIONS && (
+				<Breathing goToNextPageState={goToNextPageState} />
+			)}
 			{pageState === STATES.END && (
 				<End goToNextPageState={goToNextPageState} />
 			)}
@@ -58,22 +69,19 @@ export default function Meditate() {
 
 	function GetReady({ goToNextPageState }) {
 		return (
-			<div className={styles.container}>
-				<h1 className={styles.titlefadein}>Get Ready</h1>
-				<h1 className={styles.subtitlefadein}>
+			<div className="flex flex-col justify-center items-center">
+				<h1 className={`text-4xl ${styles.titlefadein}`}>Get Ready</h1>
+				<h1
+					className={`text-xl mt-2 mb-2 text-center ${styles.subtitlefadein}`}
+				>
 					Sit comfortably upright in a silent and safe space
 				</h1>
-				<button className={styles.button1} onClick={goToNextPageState}>
+				<button
+					className={`bg-[#273347] px-5 py-2 text-xl rounded-3xl cursor-pointer font-bright-pause ${styles.button1}`}
+					onClick={goToNextPageState}
+				>
 					Start
 				</button>
-			</div>
-		);
-	}
-
-	function End({ goToNextPageState }) {
-		return (
-			<div className={styles.container}>
-				<h1 className={styles.titlefadein}>Bye</h1>
 			</div>
 		);
 	}
@@ -83,10 +91,18 @@ export default function Meditate() {
 		const [currentInstructionIndex, setCurrentInstructionIndex] = useState(0);
 
 		useEffect(() => {
+			const audio = new Audio("/gong1.mp3");
+			audio.play();
 			const intervalId = setInterval(() => {
-				setCurrentInstructionIndex(
-					(prevIndex) => (prevIndex + 1) % breathInstructions.length
-				);
+				setCurrentInstructionIndex((prevIndex) => {
+					const newIndex = (prevIndex + 1) % breathInstructions.length;
+					// Play tick for even indices (0,2) and gong for odd indices (1,3)
+					const audio = new Audio(
+						newIndex % 2 === 0 ? "/gong1.mp3" : "/tick.mp3"
+					);
+					audio.play();
+					return newIndex;
+				});
 			}, 5000);
 
 			return () => clearInterval(intervalId);
@@ -95,18 +111,37 @@ export default function Meditate() {
 		setTimeout(() => {
 			goToNextPageState();
 		}, 120000);
+
 		return (
 			<aside className={styles.breathecontainer}>
-				{/* <h1 className={styles.title}>In progress page</h1> */}
 				<div className={styles.boxborder}>
 					<div className={styles.trail}></div>
 				</div>
 				<div className={styles.box}>
-					<p className={styles.instuction}>
+					<p className={styles.instruction}>
 						{breathInstructions[currentInstructionIndex]}
 					</p>
 				</div>
 			</aside>
+		);
+	}
+
+	function End({ goToNextPageState }) {
+		return (
+			<div className="flex flex-col justify-between items-center min-h-screen">
+				<div className="flex-1 flex items-center">
+					<div className={styles.container}>
+						<h1 className={styles.titlefadein}>
+							Thank you for showing up for yourself.
+						</h1>
+						<div className="flex items-center gap-2 mt-12">
+							<IconButton Icon={SlReload} onClick={goToNextPageState} />
+							<p className="text-2xl">Take another session.</p>
+						</div>
+					</div>
+				</div>
+				<Footer />
+			</div>
 		);
 	}
 }
