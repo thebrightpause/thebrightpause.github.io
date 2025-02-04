@@ -17,7 +17,7 @@ const STATES = {
 };
 
 export default function Meditate() {
-	const [pageState, setPageState] = useState(STATES.INSTRUCTIONS);
+	const [pageState, setPageState] = useState(STATES.INTRODUCTION);
 
 	const goToNextPageState = () => {
 		switch (pageState) {
