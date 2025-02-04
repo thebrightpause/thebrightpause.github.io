@@ -6,6 +6,7 @@ import Breathing from "./components/components";
 import IconButton from "../components/IconButton";
 import { SlReload } from "react-icons/sl";
 import Footer from "../components/Footer";
+import React from "react";
 
 const STATES = {
 	INTRODUCTION: "introduction",
@@ -16,7 +17,7 @@ const STATES = {
 };
 
 export default function Meditate() {
-	const [pageState, setPageState] = useState(STATES.INTRODUCTION);
+	const [pageState, setPageState] = useState(STATES.INSTRUCTIONS);
 
 	const goToNextPageState = () => {
 		switch (pageState) {
@@ -31,6 +32,9 @@ export default function Meditate() {
 				break;
 			case STATES.IN_PROGRESS:
 				setPageState(STATES.END);
+				break;
+			case STATES.END:
+				setPageState(STATES.INTRODUCTION);
 				break;
 			default:
 				setPageState(STATES.INTRODUCTION);
@@ -89,23 +93,33 @@ export default function Meditate() {
 	function InProgress({ goToNextPageState }) {
 		const breathInstructions = ["Inhale", "Hold", "Exhale", "Hold"];
 		const [currentInstructionIndex, setCurrentInstructionIndex] = useState(0);
+		const indexRef = React.useRef(0);
 
 		useEffect(() => {
+			// Play initial gong
 			const audio = new Audio("/gong1.mp3");
 			audio.play();
+
+			// Audio timer - starts at 4s, 9s, 14s, etc. (1s before text changes)
+			const audioInterval = setInterval(() => {
+				const audio = new Audio(
+					indexRef.current % 2 === 0 ? "/tick.mp3" : "/gong1.mp3"
+				);
+				audio.play();
+			}, 5000);
+
+			// Text update timer - changes at 5s, 10s, 15s, etc.
 			const intervalId = setInterval(() => {
 				setCurrentInstructionIndex((prevIndex) => {
-					const newIndex = (prevIndex + 1) % breathInstructions.length;
-					// Play tick for even indices (0,2) and gong for odd indices (1,3)
-					const audio = new Audio(
-						newIndex % 2 === 0 ? "/gong1.mp3" : "/tick.mp3"
-					);
-					audio.play();
-					return newIndex;
+					indexRef.current = (prevIndex + 1) % breathInstructions.length;
+					return indexRef.current;
 				});
 			}, 5000);
 
-			return () => clearInterval(intervalId);
+			return () => {
+				clearInterval(intervalId);
+				clearInterval(audioInterval);
+			};
 		}, []);
 
 		setTimeout(() => {
@@ -113,7 +127,7 @@ export default function Meditate() {
 		}, 120000);
 
 		return (
-			<aside className={styles.breathecontainer}>
+			<aside className={`${styles.breathecontainer} animate-fade-in delay-500`}>
 				<div className={styles.boxborder}>
 					<div className={styles.trail}></div>
 				</div>

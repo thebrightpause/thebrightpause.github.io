@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import styles from "../breathe.module.css";
 
 function Breathing({ goToNextPageState }) {
-	const [isTransforming, setIsTransforming] = useState(false);
-	const [isVisible, setIsVisible] = useState(false);
 	const [isAnimating, setIsAnimating] = useState(false);
 	const [introText, setIntroText] = useState("");
 	const [showIntroText, setShowIntroText] = useState(true);
@@ -21,12 +19,9 @@ function Breathing({ goToNextPageState }) {
 	useEffect(() => {
 		// Show initial text
 		setIntroText("Let's start with 3 deep breaths");
-		setIsVisible(true); // Fade in
 
 		// After 2 seconds, start fade out
 		const hideIntroTimer = setTimeout(() => {
-			setIsVisible(false); // Fade out
-
 			// Wait for fade out to complete before changing content
 			setTimeout(() => {
 				setShowIntroText(false);
@@ -35,7 +30,6 @@ function Breathing({ goToNextPageState }) {
 				const soundTimer = setTimeout(() => {
 					const audio = new Audio("/gong1.mp3");
 					audio.play();
-					setIsVisible(true);
 					setIsAnimating(true);
 
 					// Start instruction phase
@@ -46,7 +40,7 @@ function Breathing({ goToNextPageState }) {
 							}
 							// When instructions end, show final text
 							clearInterval(instructionInterval);
-							setIsVisible(false);
+							setIsAnimating(false);
 							setShowIntroText(true);
 							setIntroText("Let's slow down");
 
@@ -64,7 +58,7 @@ function Breathing({ goToNextPageState }) {
 				}, 500);
 
 				return () => clearTimeout(soundTimer);
-			}, 1000); // Match this with the transition duration
+			}, 1000);
 		}, 2000);
 
 		return () => clearTimeout(hideIntroTimer);
@@ -76,8 +70,7 @@ function Breathing({ goToNextPageState }) {
 				<h1
 					className={`
 						text-4xl text-center
-						transition-opacity duration-1000 ease-in-out
-						${isVisible ? "opacity-100" : "opacity-0"}
+						animate-fade-in
 					`}
 				>
 					{introText}
@@ -89,14 +82,10 @@ function Breathing({ goToNextPageState }) {
 					}`}
 				>
 					<div
-						className={`${styles.circleborder} ${
-							isTransforming ? styles.transformToSquare : ""
-						} ${isVisible ? styles.visible : styles.hidden}`}
+						className={`${styles.circleborder} animate-fade-in`}
 					></div>
 					<div
-						className={`${styles.circle} ${
-							isTransforming ? styles.transformToSquare : ""
-						} ${isVisible ? styles.visible : styles.hidden}`}
+						className={`${styles.circle} animate-fade-in`}
 					>
 						<p className={styles.instruction}>
 							{breathInstructions[currentInstructionIndex]}
