@@ -289,18 +289,6 @@ a.secondary {
     display: block;
   }
 
-  .footerMessage {
-    font-size: 18px;
-  }
-
-  .socialLinkContainer a:first-of-type {
-    margin-left: 0; /* Ensure no space on the left side */
-  }
-
-  .socialLinkContainer a:not(:first-of-type) {
-    margin-left: 12px; /* Space between other links */
-  }
-
   .footer {
     flex-wrap: wrap;
     align-items: center;
