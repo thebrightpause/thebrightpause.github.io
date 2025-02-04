@@ -17,14 +17,14 @@ export default function Home() {
 					priority
 				/>
 				<div>
-					<div className={`${styles.breatheEntry} lg:text-xl`}>
+					<div className={`${styles.breatheEntry} text-sm lg:text-xl`}>
 						Feeling Drained? Take a quick&nbsp;
 						<Link href="/breathe" className={styles.cloud}></Link> with us.
 					</div>
 					<div className={styles.contentDivider}></div>
 				</div>
 				<div className={styles.contentContainer}>
-					<section className={`${styles.body} lg:text-xl`}>
+					<section className={`${styles.body} text-sm lg:text-xl`}>
 						<p>
 							Today&apos;s social media landscape pushes you to compare your
 							life to others, whether you realize it or not. LinkedIn makes you

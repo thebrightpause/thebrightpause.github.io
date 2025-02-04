@@ -7,7 +7,7 @@ export default function IconButton({ Icon, onClick, link }) {
 				rel="noopener noreferrer"
 				className="p-2 bg-[#273347] rounded-full cursor-pointer"
 			>
-				<Icon className="w-5 h-5 text-white" />
+				<Icon className="w-3 h-3 lg:w-5 lg:h-5 text-white" />
 			</a>
 		);
 	}
@@ -17,7 +17,7 @@ export default function IconButton({ Icon, onClick, link }) {
 			className="p-2 bg-[#273347] rounded-full cursor-pointer"
 			onClick={onClick}
 		>
-			<Icon className="w-5 h-5 text-white" />
+			<Icon className="w-4 h-4 lg:w-5 lg:h-5 text-white" />
 		</div>
 	);
 }

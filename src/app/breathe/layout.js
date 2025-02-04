@@ -1,12 +1,23 @@
+import { THE_BRIGHT_PAUSE } from "../constants";
+
 export const metadata = {
-	title: "Breathe",
-	description: "A quick breathing break by thebrightpause",
+    title: "Breathe | The Bright Pause",
+    description: "A quick breathing break by thebrightpause",
+    openGraph: {
+        title: "Breathe | The Bright Pause",
+        description: "A quick breathing break by thebrightpause",
+        images: [THE_BRIGHT_PAUSE.image],
+    },
+    twitter: {
+        card: "summary_large_image",
+        url: `${THE_BRIGHT_PAUSE.url}/breathe`,
+        site: "@thebrightpause",
+        title: "Breathe | The Bright Pause",
+        description: "A quick breathing break by thebrightpause",
+        images: [THE_BRIGHT_PAUSE.image],
+    },
 };
 
-export default function RootLayout({ children }) {
-	return (
-		<html lang="en">
-			<body>{children}</body>
-		</html>
-	);
+export default function BreatheLayout({ children }) {
+    return children;
 }
