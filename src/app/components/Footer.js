@@ -18,10 +18,11 @@ export default function Footer() {
 				height={180}
 				priority
 			/>
-			<div className="h-8 border-l border-white mr-8"></div>
-			<div className="flex items-center text-md font-bright-pause">
+			<div className="hidden sm:block h-8 border-l border-white mr-8"></div>
+			<div className="flex items-center text-md lg:text-xl font-bright-pause">
 				Find more&nbsp;
-				<span className="hidden lg:block">bright pauses&nbsp;</span>
+				{/* <span className="hidden lg:block">bright pauses&nbsp;</span> */}
+				<span>bright pauses&nbsp;</span>
 				at
 			</div>
 			{/* <IconButton Icon={BsYoutube} link="https://youtube.com/@thebrightpause" /> */}
