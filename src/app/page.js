@@ -1,16 +1,14 @@
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./page.module.css";
-import { BsYoutube } from "react-icons/bs";
-import { BsInstagram } from "react-icons/bs";
-import { BsTwitterX } from "react-icons/bs";
-import { BsLinkedin } from "react-icons/bs";
+import Footer from "./components/Footer";
 
 export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
         <Image
-          className={styles.logo}
+          className={styles.logoDesktop}
           style={{ alignSelf: "center" }}
           src="/thebrightpause-logo.svg"
           alt="The Bright Pause logo"
@@ -18,8 +16,18 @@ export default function Home() {
           height={180}
           priority
         />
+        <div>
+          <div className={`${styles.breatheEntry} text-sm lg:text-xl`}>
+            Feeling Drained? Take a quick&nbsp;
+            <Link href="/breathe" className="underline hover:no-underline">
+              break
+            </Link>
+            &nbsp;with us.
+          </div>
+          <div className={styles.contentDivider}></div>
+        </div>
         <div className={styles.contentContainer}>
-          <section className={styles.body}>
+          <section className={`${styles.body} text-sm lg:text-xl`}>
             <p>
               Today&apos;s social media landscape pushes you to compare your
               life to others, whether you realize it or not. LinkedIn makes you
@@ -35,40 +43,9 @@ export default function Home() {
               awareness for real life.
             </p>
           </section>
-          <section className={styles.socialLinkContainer}>
-            <a
-              href="https://instagram.com/thebrightpause"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <BsInstagram />
-              Instagram
-            </a>
-            <a
-              href="https://x.com/thebrightpause"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <BsTwitterX />
-              Twitter
-            </a>
-            <a
-              href="https://www.linkedin.com/company/thebrightpause"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <BsLinkedin />
-              LinkedIn
-            </a>
-            <a
-              href="https://youtube.com/@thebrightpause"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <BsYoutube />
-              YouTube
-            </a>
-          </section>
+        </div>
+        <div className="fixed bottom-0 left-0 right-0 flex justify-center pb-8">
+          <Footer />
         </div>
       </main>
     </div>
