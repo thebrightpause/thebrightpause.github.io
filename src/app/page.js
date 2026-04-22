@@ -17,6 +17,10 @@ const styles = `
     --hair-strong: oklch(1 0 0 / 0.22);
   }
 
+  html, body {
+    background-color: var(--dusk-4);
+  }
+
   .tbp-body {
     font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
     color: var(--ink);
