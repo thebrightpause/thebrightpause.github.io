@@ -4,9 +4,23 @@ import { THE_BRIGHT_PAUSE } from "./constants";
 import { thebrightpause } from "./fonts";
 
 export const metadata = {
+	metadataBase: new URL(THE_BRIGHT_PAUSE.url),
 	title: THE_BRIGHT_PAUSE.title,
 	description: THE_BRIGHT_PAUSE.description,
+	alternates: {
+		canonical: "/",
+	},
 	openGraph: {
+		type: "website",
+		url: THE_BRIGHT_PAUSE.url,
+		siteName: THE_BRIGHT_PAUSE.title,
+		title: THE_BRIGHT_PAUSE.title,
+		description: THE_BRIGHT_PAUSE.description,
+		images: [{ url: THE_BRIGHT_PAUSE.image, width: 1200, height: 630 }],
+	},
+	twitter: {
+		card: "summary_large_image",
+		site: "@thebrightpause",
 		title: THE_BRIGHT_PAUSE.title,
 		description: THE_BRIGHT_PAUSE.description,
 		images: [THE_BRIGHT_PAUSE.image],
@@ -14,20 +28,7 @@ export const metadata = {
 	robots: {
 		index: true,
 		follow: true,
-		nocache: true,
-		googleBot: {
-			index: true,
-			follow: true,
-			noimageindex: true,
-		},
-		twitter: {
-			card: "summary_large_image",
-			url: THE_BRIGHT_PAUSE.url,
-			site: "@thebrightpause",
-			title: THE_BRIGHT_PAUSE.title,
-			description: THE_BRIGHT_PAUSE.description,
-			images: [THE_BRIGHT_PAUSE.image],
-		},
+		googleBot: { index: true, follow: true },
 	},
 };
 
